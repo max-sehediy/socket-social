@@ -1,7 +1,6 @@
 {
   "name": "socket",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
@@ -10,7 +9,18 @@
   "author": "max",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "nodemon": "^2.0.7",
     "socket.io": "^4.0.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max-sehediy/socket.git"
+  },
+  "bugs": {
+    "url": "https://github.com/max-sehediy/socket/issues"
+  },
+  "homepage": "https://github.com/max-sehediy/socket#readme",
+  "description": "websocket for chat"
 }
