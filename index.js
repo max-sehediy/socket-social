@@ -1,9 +1,21 @@
-const io = require("socket.io")(8900, {
-  cors: {
-    origin: "http://localhost:3000",
-  },
+
+const express = require('express');
+const socketIO = require('socket.io');
+
+
+const PORT = process.env.PORT || 8900;
+const INDEX = '/index.html';
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const io = socketIO(server);
+io.on('connection', (socket) => {
+  socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 let users = [];
 const addUser = (userId, socketId) => {
   !users.some((user) => user.userId === userId) &&
